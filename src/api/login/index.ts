@@ -9,7 +9,7 @@ import { request } from '@/utils/request';
 export function login(data: API.LoginParams) {
   return request<BaseResponse<API.LoginResult>>(
     {
-      url: 'login',
+      url: 'login/userLogin',
       method: 'post',
       data,
     },
@@ -23,7 +23,7 @@ export function login(data: API.LoginParams) {
  */
 export function getImageCaptcha(params?: API.CaptchaParams) {
   return request<API.CaptchaResult>({
-    url: 'captcha/img',
+    url: 'login/getImageCode',
     method: 'get',
     params,
   });

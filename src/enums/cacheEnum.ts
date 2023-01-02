@@ -1,6 +1,9 @@
 /** 用户token */
 export const ACCESS_TOKEN_KEY = 'ACCESS_TOKEN';
 
+/** user_code*/
+export const USER_CODE = 'USER_CODE';
+
 /** 国际化 */
 export const LOCALE_KEY = 'LOCALE__';
 

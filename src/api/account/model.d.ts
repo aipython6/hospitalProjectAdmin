@@ -32,19 +32,18 @@ declare namespace API {
     createTime: Date;
     updateTime: Date;
     id: number;
-    departmentId: number;
-    name: string;
+    departmentId: string;
+    departmentName: string;
+    userCode: string;
     username: string;
     password: string;
-    psalt: string;
-    nickName: string;
     headImg: string;
-    loginIp: string;
-    email: string;
+    level: string;
+    gender: string;
+    age: number;
     phone: string;
     remark: string;
     status: number;
     roles: number[];
-    departmentName: string;
   };
 }

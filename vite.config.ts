@@ -147,7 +147,8 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       port: 8088,
       proxy: {
         '/api': {
-          target: 'https://nest-api.buqiyuan.site/api/',
+          // target: 'https://nest-api.buqiyuan.site/api/',
+          target: 'http://localhost:3000/api/',
           // target: 'http://localhost:7001',
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, ''),

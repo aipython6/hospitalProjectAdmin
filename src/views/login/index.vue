@@ -3,7 +3,7 @@
     <div class="login-logo">
       <!-- <svg-icon name="logo" :size="45" /> -->
       <img src="~@/assets/images/logo.png" width="45" />
-      <h1 class="mb-0 ml-2 text-3xl font-bold">Antd Admin</h1>
+      <h1 class="mb-0 ml-2 text-3xl font-bold text-gray-500">Antd Admin</h1>
     </div>
     <a-form layout="horizontal" :model="state.formInline" @submit.prevent="handleSubmit">
       <a-form-item>
@@ -61,10 +61,10 @@
     loading: false,
     captcha: '',
     formInline: {
-      username: '',
-      password: '',
+      username: '10529',
+      password: '123456',
       verifyCode: '',
-      captchaId: '',
+      captchaId: 0,
     },
   });
 
@@ -74,19 +74,19 @@
   const userStore = useUserStore();
 
   const setCaptcha = async () => {
-    const { id, img } = await getImageCaptcha({ width: 100, height: 50 });
+    const { img, code_id } = await getImageCaptcha({});
     state.captcha = img;
-    state.formInline.captchaId = id;
+    state.formInline.captchaId = code_id;
   };
   setCaptcha();
 
   const handleSubmit = async () => {
     const { username, password, verifyCode } = state.formInline;
     if (username.trim() == '' || password.trim() == '') {
-      return message.warning('用户名或密码不能为空！');
+      return message.warning('用户名或密码不能为空!');
     }
     if (!verifyCode) {
-      return message.warning('请输入验证码！');
+      return message.warning('请输入验证码!');
     }
     message.loading('登录中...', 0);
     state.loading = true;
@@ -101,7 +101,7 @@
       });
       setCaptcha();
     } else {
-      message.success('登录成功！');
+      message.success('登录成功!');
       setTimeout(() => router.replace((route.query.redirect as string) ?? '/'));
     }
     state.loading = false;

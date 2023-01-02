@@ -1,7 +1,7 @@
 declare namespace API {
   /** 登录参数 */
   type LoginParams = {
-    captchaId: string;
+    captchaId: number;
     password: string;
     username: string;
     verifyCode: string;
@@ -10,6 +10,7 @@ declare namespace API {
   /** 登录成功结果 */
   type LoginResult = {
     token: string;
+    user_code: string;
   };
 
   /** 获取验证码参数 */
@@ -21,6 +22,6 @@ declare namespace API {
   /** 获取验证码结果 */
   type CaptchaResult = {
     img: string;
-    id: string;
+    code_id: string;
   };
 }

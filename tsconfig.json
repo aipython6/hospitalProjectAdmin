@@ -36,6 +36,6 @@
     "types/**/*.d.ts",
     "types/**/*.ts",
     "vite.config.ts"
-  ],
+, "src/plugins/tailwindcss/tailwindcss.css"  ],
   "exclude": ["node_modules", "dist", "**/*.js", "**/*.md", "src/**/*.md"]
 }

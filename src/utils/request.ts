@@ -1,15 +1,15 @@
 import axios from 'axios';
 import { message as $message } from 'ant-design-vue';
 import type { AxiosRequestConfig } from 'axios';
-import { ACCESS_TOKEN_KEY } from '@/enums/cacheEnum';
+import { ACCESS_TOKEN_KEY, USER_CODE } from '@/enums/cacheEnum';
 import { Storage } from '@/utils/Storage';
 import { useUserStore } from '@/store/modules/user';
 import { uniqueSlash } from '@/utils/urlUtils';
 
 export interface RequestOptions {
-  /** 当前接口权限, 不需要鉴权的接口请忽略， 格式：sys:user:add */
+  /** 当前接口权限, 不需要鉴权的接口请忽略, 格式：sys:user:add */
   permCode?: string;
-  /** 是否直接获取data，而忽略message等 */
+  /** 是否直接获取data,而忽略message等 */
   isGetDataDirectly?: boolean;
   /** 请求成功是提示信息 */
   successMsg?: string;
@@ -19,7 +19,7 @@ export interface RequestOptions {
   isMock?: boolean;
 }
 
-const UNKNOWN_ERROR = '未知错误，请重试';
+const UNKNOWN_ERROR = '未知错误,请重试';
 
 /** 真实请求的路径前缀 */
 const baseApiUrl = import.meta.env.VITE_BASE_API;
@@ -34,9 +34,11 @@ const service = axios.create({
 service.interceptors.request.use(
   (config) => {
     const token = Storage.get(ACCESS_TOKEN_KEY);
+    const userCode = Storage.get(USER_CODE);
     if (token && config.headers) {
-      // 请求头token信息，请根据实际情况进行修改
+      // 请求头token信息,请根据实际情况进行修改
       config.headers['Authorization'] = token;
+      config.headers['user_code'] = userCode;
     }
     return config;
   },
@@ -60,7 +62,7 @@ service.interceptors.response.use(
         // to re-login
         // Modal.confirm({
         //   title: '警告',
-        //   content: res.message || '账号异常，您可以取消停留在该页上，或重新登录',
+        //   content: res.message || '账号异常,您可以取消停留在该页上,或重新登录',
         //   okText: '重新登录',
         //   cancelText: '取消',
         //   onOk: () => {
@@ -106,10 +108,10 @@ export const request = async <T = any>(
   options: RequestOptions = {},
 ): Promise<T> => {
   try {
-    const { successMsg, errorMsg, permCode, isMock, isGetDataDirectly = true } = options;
+    const { successMsg, errorMsg, permCode, isMock, isGetDataDirectly = false } = options;
     // 如果当前是需要鉴权的接口 并且没有权限的话 则终止请求发起
     if (permCode && !useUserStore().perms.includes(permCode)) {
-      return $message.error('你没有访问该接口的权限，请联系管理员！');
+      return $message.error('你没有访问该接口的权限,请联系管理员!');
     }
     const fullUrl = `${(isMock ? baseMockUrl : baseApiUrl) + config.url}`;
     config.url = uniqueSlash(fullUrl);
