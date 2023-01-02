@@ -1,4 +1,4 @@
-# vite-vue3-admin
+# hospitalAppAdmin
 
 
 基于 vite3.x + vue3.x + antd-design-vue3.x + typescript4.x 的后台管理系统模板
@@ -9,7 +9,7 @@
 - 获取项目代码
 
 ```bash
-git clone https://github.com/buqiyuan/vite-vue3-admin
+git clone https://github.com/aipython6/hospitalProjectAdmin.git
 ```
 
 - 安装依赖
