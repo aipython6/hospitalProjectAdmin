@@ -131,7 +131,7 @@ export const generatorDynamicRouter = (asyncMenus: API.Menu[]) => {
     layout.children = [...filterRoutes];
     // 重新添加拍平后的路由
     router.addRoute(layout);
-    console.log('所有路由', router.getRoutes());
+    // console.log('所有路由', router.getRoutes());
 
     return Promise.resolve({
       menus,

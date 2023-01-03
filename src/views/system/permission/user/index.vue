@@ -136,7 +136,7 @@
   const rowSelection = ref({
     selectedRowKeys: [] as number[],
     onChange: (selectedRowKeys: number[], selectedRows: TableListItem[]) => {
-      console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+      // console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
       rowSelection.value.selectedRowKeys = selectedRowKeys;
     },
   });
@@ -148,14 +148,14 @@
    * @description 打开部门弹窗
    */
   const openDeptModal = async (record: Partial<API.SysDeptListResult> = {}) => {
-    console.log('record', record);
+    // console.log('record', record);
 
     const [formRef] = await showModal<any>({
       modalProps: {
         title: `${record.id ? '编辑' : '新增'}部门`,
         width: 700,
         onFinish: async (values) => {
-          console.log('新增/编辑部门', values);
+          // console.log('新增/编辑部门', values);
           values.id = record.id;
           await (record.id ? updateDept : createDept)(values);
           fetchDeptList();
@@ -227,7 +227,7 @@
         title: `${record.id ? '编辑' : '新增'}用户`,
         width: 700,
         onFinish: async (values) => {
-          console.log('新增/编辑用户', values);
+          // console.log('新增/编辑用户', values);
           values.id = record.id;
           await (record.id ? updateUser : createUser)(values);
           dynamicTableInstance?.reload();

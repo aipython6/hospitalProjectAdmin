@@ -37,7 +37,7 @@
       <FullScreen />
       <LocalePicker />
       <Dropdown placement="bottomRight">
-        <Avatar :src="userInfo.headImg" :alt="userInfo.name">{{ userInfo.name }}</Avatar>
+        <Avatar :src="headImg" :alt="name">{{ name }}</Avatar>
         <template #overlay>
           <Menu>
             <Menu.Item @click="$router.push({ name: 'account-about' })">
@@ -107,7 +107,9 @@
 
   const router = useRouter();
   const route = useRoute();
-  const userInfo = computed(() => userStore.userInfo);
+  // const userInfo = computed(() => userStore.userInfo);
+  const headImg = computed(() => userStore.avatar);
+  const name = computed(() => userStore.name);
   const headerStyle = computed<CSSProperties>(() => {
     const { navTheme, layout } = themeStore;
     const isDark = navTheme === 'dark' && layout === 'topmenu';
@@ -169,7 +171,7 @@
   // 点击菜单
   const clickMenuItem = (menuItem: RouteRecordRaw) => {
     const lastChild = findLastChild(menuItem);
-    console.log('lastChild', menuItem, lastChild);
+    // console.log('lastChild', menuItem, lastChild);
 
     const targetRoute = getRouteByName(lastChild?.name);
     const { isExt, openMode } = targetRoute?.meta || {};
@@ -188,7 +190,7 @@
       centered: true,
       onOk: async () => {
         // 如果不是rootadmin，则退出登录
-        if (userStore.userInfo.phone !== '13553550634') {
+        if (userStore.name !== 'admin') {
           // logout({})
           await userStore.logout();
         }

@@ -102,7 +102,7 @@ export class SocketIOWrapper {
     }
     // auth token
     const token = useUserStore().token;
-    console.log('token', token);
+    // console.log('token', token);
     if (isEmpty(token)) {
       // 未登录状态则直接关闭连接
       this.close();

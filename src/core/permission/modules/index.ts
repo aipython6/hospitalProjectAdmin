@@ -39,4 +39,4 @@ export const permissions: Permissions = Object.keys(modulesPermissionFiles).redu
   },
   {},
 );
-console.log('permissions', permissions);
+// console.log('permissions', permissions);

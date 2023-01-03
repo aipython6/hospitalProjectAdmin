@@ -49,27 +49,27 @@ export const useBattery = () => {
   onMounted(async () => {
     const BatteryManager: Battery = (await (window.navigator as any).getBattery?.()) || {};
     updateBattery(BatteryManager);
-    console.log(BatteryManager, '电池');
+    // console.log(BatteryManager, '电池');
 
     // 电池充电状态更新时被调用
     BatteryManager.onchargingchange = ({ target }) => {
       updateBattery(target);
-      console.log(target, '电池充电状态改变了');
+      // console.log(target, '电池充电状态改变了');
     };
     // 电池充电时间更新时被调用
     BatteryManager.onchargingtimechange = ({ target }) => {
       updateBattery(target);
-      console.log(target, '电池充电了');
+      // console.log(target, '电池充电了');
     };
     // 电池断开充电时间更新时被调用
     BatteryManager.ondischargingtimechange = ({ target }) => {
       updateBattery(target);
-      console.log(target, '电池断开充电了');
+      // console.log(target, '电池断开充电了');
     };
     // 电池电量更新时被调用
     BatteryManager.onlevelchange = ({ target }) => {
       updateBattery(target);
-      console.log(target, '电量更新了');
+      // console.log(target, '电量更新了');
     };
 
     // new Intl.DateTimeFormat('zh', {

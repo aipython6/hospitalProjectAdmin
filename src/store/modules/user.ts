@@ -63,7 +63,7 @@ export const useUserStore = defineStore({
       const ex = 7 * 24 * 60 * 60 * 1000;
       Storage.set(ACCESS_TOKEN_KEY, this.token, ex);
     },
-    /** 登录成功后保存user_code*/
+    /** 登录成功后保存userCode*/
     setUserCode(userCode: string) {
       this.userCode = userCode ?? '';
       Storage.set(USER_CODE, this.userCode);
@@ -84,11 +84,10 @@ export const useUserStore = defineStore({
       try {
         const wsStore = useWsStore();
         const [userInfo, { perms, menus }] = await Promise.all([getInfo(), permmenu()]);
-        console.log(userInfo);
         this.perms = perms;
-        this.name = userInfo.username;
-        this.avatar = userInfo.headImg;
-        this.userCode = userInfo.userCode;
+        this.name = userInfo.userInfo.username;
+        this.avatar = userInfo.userInfo.headImg;
+        this.userCode = userInfo.userInfo.userCode;
         this.userInfo = userInfo;
         // 生成路由
         const generatorResult = await generatorDynamicRouter(menus);

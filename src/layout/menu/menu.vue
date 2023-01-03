@@ -43,7 +43,7 @@
   });
 
   const menus = computed(() => userStore.menus);
-  console.log('menus', menus.value);
+  // console.log('menus', menus.value);
   /** 侧边栏布局 */
   const isSideMenu = computed(() => themeStore.layout === 'sidemenu');
   const getRouteByName = (name: string) => router.getRoutes().find((n) => n.name === name);

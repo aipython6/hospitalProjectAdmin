@@ -28,22 +28,42 @@ declare namespace API {
     perms: string[];
   };
 
+  // type AdminUserInfo = {
+  //   createTime: Date;
+  //   updateTime: Date;
+  //   id: number;
+  //   departmentId: string;
+  //   departmentName: string;
+  //   userCode: string;
+  //   username: string;
+  //   password: string;
+  //   headImg: string;
+  //   level: string;
+  //   gender: string;
+  //   age: number;
+  //   phone: string;
+  //   remark: string;
+  //   status: number;
+  //   roles: number[];
+  // };
   type AdminUserInfo = {
-    createTime: Date;
-    updateTime: Date;
-    id: number;
-    departmentId: string;
-    departmentName: string;
-    userCode: string;
-    username: string;
-    password: string;
-    headImg: string;
-    level: string;
-    gender: string;
-    age: number;
-    phone: string;
-    remark: string;
-    status: number;
-    roles: number[];
+    userInfo: {
+      createTime: Date;
+      updateTime: Date;
+      id: number;
+      departmentId: string;
+      departmentName: string;
+      userCode: string;
+      username: string;
+      password: string;
+      headImg: string;
+      level: string;
+      gender: string;
+      age: number;
+      phone: string;
+      remark: string;
+      status: number;
+      roles: number[];
+    };
   };
 }
