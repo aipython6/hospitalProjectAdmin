@@ -30,8 +30,8 @@
   .iframe-box {
     transform: translate(0);
 
-    :deep(div[class^='ant-spin']) {
+    /**:deep(div[class^='ant-spin']) {
       @apply wh-full;
-    }
+    }*/
   }
 </style>

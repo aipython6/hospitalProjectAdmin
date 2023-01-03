@@ -51,7 +51,7 @@ export const useUserStore = defineStore({
   actions: {
     /** 清空token及用户信息 */
     resetToken() {
-      this.avatar = this.token = this.name = '';
+      this.avatar = this.token = this.userCode = this.name = '';
       this.perms = [];
       this.menus = [];
       this.userInfo = {};
@@ -84,6 +84,7 @@ export const useUserStore = defineStore({
       try {
         const wsStore = useWsStore();
         const [userInfo, { perms, menus }] = await Promise.all([getInfo(), permmenu()]);
+        console.log(userInfo);
         this.perms = perms;
         this.name = userInfo.username;
         this.avatar = userInfo.headImg;
