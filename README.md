@@ -15,7 +15,7 @@ git clone https://github.com/aipython6/hospitalProjectAdmin.git
 - 安装依赖
 
 ```bash
-cd vite-vue3-admin
+cd hospitalProjectAdmin
 
 pnpm install
 
